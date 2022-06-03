@@ -12,7 +12,7 @@ const DataContainer = ({ search }) => {
             {state.loading && <p className='animate__animated animate__flash'>Loading...</p>}
             {state.error && <p className='animate__animated animate__hinge'>{state.error}</p>}
 
-            <div className="card-grid animate__animated animate__bounceInUp data-container">
+            <div className="max-w-sm w-full lg:max-w-full animate__animated animate__animated animage__jackInTheBox data-container">
                 {
                     <MovieItem movie={movie} />
                 }
