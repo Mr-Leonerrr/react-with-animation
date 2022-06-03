@@ -1,33 +1,20 @@
 import { useEffect, useState } from "react";
 import { getMovies } from "../helpers/getMovies";
 
-export const useGetMovies = (searchValue) => {
-    const [movies, setMovies] = useState([]);
-    const [search, setSearch] = useState(searchValue);
 
-    const [state, setState] = useState({
-        loading: true,
-        error: false
-    });
+export const useGetMovies = (search) => {
+    const [movies, setMovies] = useState([]);
+    const [state, setState] = useState({ loading: true, error: null });
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const result = await getMovies(search);
-                setMovies(result);
-                setState({
-                    loading: false,
-                    error: false
-                });
-            } catch (error) {
-                setState({
-                    loading: false,
-                    error: true
-                });
-            }
-        };
-        fetchData();
+        getMovies(search).then(data => {
+            setMovies(data);
+            setState({ loading: false });
+        }).catch(error => {
+            console.log(error);
+            setState({ error: error.message, loading: false });
+        });
     }, [search]);
 
-    return { movies, setSearch, state };
+    return [movies, state];
 }
