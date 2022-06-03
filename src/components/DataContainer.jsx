@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGetMovies } from '../hooks/useGetMovies';
-import MovieItem from './movieItem';
+import MovieItem from './MovieItem';
 
 
 const DataContainer = ({ search }) => {
