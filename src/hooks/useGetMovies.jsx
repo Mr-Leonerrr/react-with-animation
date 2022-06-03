@@ -29,5 +29,5 @@ export const useGetMovies = (searchValue) => {
         fetchData();
     }, [search]);
 
-    return [movies, setSearch, state];
+    return { movies, setSearch, state };
 }
