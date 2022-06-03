@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import MovieSearcher from './components/MovieSearcher';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <MovieSearcher />,
+  document.getElementById('root')
 );

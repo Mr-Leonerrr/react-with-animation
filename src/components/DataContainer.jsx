@@ -4,18 +4,17 @@ import MovieItem from './MovieItem';
 
 
 const DataContainer = ({ search }) => {
-    const { movies, state } = useGetMovies(search);
+    const [movie, state] = useGetMovies(search);
 
     return (
         <>
-            <h3>{search}</h3>
+            {/* <h3>{search}</h3> */}
             {state.loading && <p className='animate__animated animate__flash'>Loading...</p>}
+            {state.error && <p className='animate__animated animate__hinge'>{state.error}</p>}
 
             <div className="card-grid animate__animated animate__bounceInUp data-container">
                 {
-                    movies.map(movie => (
-                        <MovieItem key={movie.imdbID} {...movie} />
-                    ))
+                    <MovieItem movie={movie} />
                 }
             </div>
         </>
