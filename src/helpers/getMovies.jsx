@@ -5,7 +5,6 @@ export const getMovies = async (searchValue) => {
     const url = `${API_URL}?t=${searchValue}&apikey=${API_KEY}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
 
     if (data.Response === 'False') {
         throw new Error(data.Error);

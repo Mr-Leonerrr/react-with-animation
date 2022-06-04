@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ApplySearch from './ApplySearch';
 import DataContainer from './DataContainer';
+import RecentSearches from './RecentSearches';
 
 
-const MovieSearcher = ({ movie = 'Iron Man' }) => {
+const MovieSearcher = ({ movie = '' }) => {
     const [search, setSearch] = useState(movie);
 
     return (
@@ -12,6 +13,8 @@ const MovieSearcher = ({ movie = 'Iron Man' }) => {
             <ApplySearch searchValue={setSearch} />
             <hr />
             <DataContainer key={search} search={search} />
+            <hr />
+            <RecentSearches />
         </>
     );
 };
