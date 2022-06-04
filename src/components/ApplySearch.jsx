@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { firebase } from "../firebase";
 
 const ApplySearch = ({ searchValue }) => {
     const [search, setSearch] = useState('');
@@ -12,6 +13,17 @@ const ApplySearch = ({ searchValue }) => {
 
         if (search.trim().length > 0) {
             searchValue(search);
+            try {
+                const db = firebase.firestore();
+
+                db.collection('searches').add({
+                    search,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+            } catch (error) {
+                console.log(error);
+            }
             setSearch('');
         }
     };

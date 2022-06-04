@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovies } from "../helpers/getMovies";
+import { firebase } from "../firebase";
 
 
 export const useGetMovies = (search) => {
@@ -9,6 +10,12 @@ export const useGetMovies = (search) => {
     useEffect(() => {
         getMovies(search).then(data => {
             setMovies(data);
+            const db = firebase.firestore();
+
+            db.collection('searchResults').add({
+                data,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
             setTimeout(() => {
                 setState({ loading: false });
             }, 1500);
