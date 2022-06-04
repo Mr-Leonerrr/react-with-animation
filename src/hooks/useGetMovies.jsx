@@ -9,7 +9,9 @@ export const useGetMovies = (search) => {
     useEffect(() => {
         getMovies(search).then(data => {
             setMovies(data);
-            setState({ loading: false });
+            setTimeout(() => {
+                setState({ loading: false });
+            }, 1500);
         }).catch(error => {
             console.log(error);
             setState({ error: error.message, loading: false });

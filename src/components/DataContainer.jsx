@@ -8,11 +8,10 @@ const DataContainer = ({ search }) => {
 
     return (
         <>
-            {/* <h3>{search}</h3> */}
             {state.loading && <p className='animate__animated animate__flash'>Loading...</p>}
-            {state.error && <p className='animate__animated animate__hinge'>{state.error}</p>}
+            {state.error && <p className='animate__animated animate__wobble'>{state.error}</p>}
 
-            <div className="max-w-sm w-full lg:max-w-full animate__animated animate__animated animage__jackInTheBox data-container">
+            <div className="max-w-sm w-full lg:max-w-full animate__animated animate__jackInTheBox container">
                 {
                     <MovieItem movie={movie} />
                 }
